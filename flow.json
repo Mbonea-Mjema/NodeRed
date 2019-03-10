@@ -365,8 +365,8 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 270,
-        "y": 380,
+        "x": 350,
+        "y": 360,
         "wires": []
     },
     {
@@ -378,7 +378,8 @@
         "y": 380,
         "wires": [
             [
-                "854b5734.618998"
+                "854b5734.618998",
+                "3147f93e.0ee686"
             ],
             [
                 "854b5734.618998"
@@ -422,8 +423,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
-        "x": 410,
+        "complete": "true",
+        "x": 390,
         "y": 260,
         "wires": []
     },
@@ -485,11 +486,10 @@
         "eventType": "value",
         "queries": [],
         "x": 160,
-        "y": 40,
+        "y": 120,
         "wires": [
             [
                 "876c1a3.32113e8",
-                "a9a7de55.33e0b",
                 "36e29cfe.00a154"
             ]
         ]
@@ -502,8 +502,8 @@
         "func": "\nglobal.set('Value',msg.payload);",
         "outputs": 1,
         "noerr": 0,
-        "x": 770,
-        "y": 280,
+        "x": 470,
+        "y": 80,
         "wires": [
             []
         ]
@@ -603,23 +603,6 @@
         ]
     },
     {
-        "id": "a9a7de55.33e0b",
-        "type": "ui_text",
-        "z": "5926e5fb.06ee9c",
-        "group": "d09b2e26.23c97",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Post",
-        "format": "{{msg.count}}",
-        "layout": "col-center",
-        "x": 570,
-        "y": 160,
-        "wires": [],
-        "icon": "node-red-node-rbe/rbe.png"
-    },
-    {
         "id": "36e29cfe.00a154",
         "type": "ui_gauge",
         "z": "5926e5fb.06ee9c",
@@ -631,7 +614,7 @@
         "gtype": "donut",
         "title": "Post Value",
         "label": "units",
-        "format": "{{msg.payload.value}}",
+        "format": "{{msg.payload}}",
         "min": 0,
         "max": "100",
         "colors": [
@@ -650,8 +633,8 @@
         "type": "subflow:5926e5fb.06ee9c",
         "z": "4802f08a.e28c8",
         "name": "Value_db",
-        "x": 580,
-        "y": 280,
+        "x": 220,
+        "y": 80,
         "wires": [
             [
                 "cc5f0310.109e5"
@@ -663,8 +646,8 @@
         "type": "subflow:c61304d7.c388e8",
         "z": "4802f08a.e28c8",
         "name": "Get_db",
-        "x": 570,
-        "y": 340,
+        "x": 470,
+        "y": 320,
         "wires": []
     },
     {
@@ -672,7 +655,7 @@
         "type": "subflow:d6158ccb.01e2c",
         "z": "4802f08a.e28c8",
         "name": "Post_db",
-        "x": 395,
+        "x": 220,
         "y": 140,
         "wires": []
     },
@@ -696,13 +679,13 @@
         "id": "1dd9ef08.5ff261",
         "type": "firebase modify",
         "z": "d6c6f9c.fb54f08",
-        "name": "update_value",
+        "name": "update_post",
         "firebaseconfig": "b1d3ba39.817868",
         "childpath": "post",
         "method": "set",
         "value": "msg.payload",
         "priority": "msg.priority",
-        "x": 660,
+        "x": 650,
         "y": 80,
         "wires": [
             []
@@ -723,5 +706,22 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "3147f93e.0ee686",
+        "type": "ui_text",
+        "z": "4802f08a.e28c8",
+        "group": "d09b2e26.23c97",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Post",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 410,
+        "y": 460,
+        "wires": [],
+        "icon": "node-red-node-rbe/rbe.png"
     }
 ]
