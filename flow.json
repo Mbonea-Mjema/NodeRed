@@ -14,9 +14,14 @@
         "in": [],
         "out": [
             {
-                "x": 940,
-                "y": 60,
-                "wires": []
+                "x": 720,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "89a3d4a5.2e7758",
+                        "port": 0
+                    }
+                ]
             }
         ]
     },
@@ -28,16 +33,71 @@
         "in": [],
         "out": [
             {
-                "x": 620,
-                "y": 80,
+                "x": 800,
+                "y": 140,
                 "wires": [
                     {
-                        "id": "14b0f4b5.1e347b",
+                        "id": "1dd9ef08.5ff261",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 500,
+                "y": 240,
+                "wires": [
+                    {
+                        "id": "588d1ff7.186d",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 780,
+                "y": 220,
+                "wires": [
+                    {
+                        "id": "3a48e7ca.9d9168",
                         "port": 0
                     }
                 ]
             }
         ]
+    },
+    {
+        "id": "5926e5fb.06ee9c",
+        "type": "subflow",
+        "name": "Value_db",
+        "info": "",
+        "in": [],
+        "out": [
+            {
+                "x": 640,
+                "y": 20,
+                "wires": [
+                    {
+                        "id": "1534ea2b.7f2f66",
+                        "port": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "c61304d7.c388e8",
+        "type": "subflow",
+        "name": "Get_db",
+        "info": "",
+        "in": [],
+        "out": []
+    },
+    {
+        "id": "d6158ccb.01e2c",
+        "type": "subflow",
+        "name": "Post_db",
+        "info": "",
+        "in": [],
+        "out": []
     },
     {
         "id": "d09b2e26.23c97",
@@ -70,7 +130,107 @@
         "type": "firebase config",
         "z": "",
         "firebaseurl": "graphic-mission-175719",
-        "loginType": "anonymous"
+        "loginType": "none"
+    },
+    {
+        "id": "704e5632.89e718",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "Arial,Arial,Helvetica,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#000000",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "Arial,Arial,Helvetica,sans-serif"
+                }
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "acf12baf.a4ecb8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Value",
+        "tab": "20bdbd05.eba782",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
     },
     {
         "id": "b3235286.58502",
@@ -86,7 +246,8 @@
         "wires": [
             [
                 "21f8f10a.5f633e",
-                "47e8268.35f0ad8"
+                "47e8268.35f0ad8",
+                "18900538.df221b"
             ]
         ]
     },
@@ -97,8 +258,8 @@
         "name": "Response",
         "statusCode": "200",
         "headers": {},
-        "x": 480,
-        "y": 260,
+        "x": 460,
+        "y": 220,
         "wires": []
     },
     {
@@ -111,7 +272,7 @@
         "console": false,
         "tostatus": false,
         "complete": "req.headers.user-agent",
-        "x": 280,
+        "x": 320,
         "y": 140,
         "wires": []
     },
@@ -127,54 +288,7 @@
         "y": 220,
         "wires": [
             [
-                "161b5f0b.f5d771",
-                "87a90344.d71cd"
-            ]
-        ]
-    },
-    {
-        "id": "87a90344.d71cd",
-        "type": "function",
-        "z": "b483e77d.48ce08",
-        "name": "response data",
-        "func": "// initialise the counter to 0 if it doesn't exist already\nvar count = context.get('count')||0;\ncount += 1;\n// store the value back\ncontext.set('count',count);\n// make it part of the outgoing msg object\nmsg.count = count;\nmsg.payload=msg.count;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 480,
-        "y": 200,
-        "wires": [
-            [
-                "5499cfaf.4784b"
-            ]
-        ]
-    },
-    {
-        "id": "5499cfaf.4784b",
-        "type": "function",
-        "z": "b483e77d.48ce08",
-        "name": "response data",
-        "func": "if (msg.db)\n{\n    msg.payload=msg.db\n    return msg;\n}\nif (msg.payload){\n    msg.db=msg.db+1;\n    msg.payload=msg.db\n    return msg;\n}\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 680,
-        "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "bb5d28d1.1fbe38",
-        "type": "function",
-        "z": "b483e77d.48ce08",
-        "name": "",
-        "func": "msg.db=msg.payload\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 430,
-        "y": 60,
-        "wires": [
-            [
-                "5499cfaf.4784b"
+                "161b5f0b.f5d771"
             ]
         ]
     },
@@ -187,12 +301,13 @@
         "method": "post",
         "upload": true,
         "swaggerDoc": "",
-        "x": 90,
-        "y": 320,
+        "x": 150,
+        "y": 280,
         "wires": [
             [
                 "1624bead.6d1061",
-                "14b0f4b5.1e347b"
+                "14b0f4b5.1e347b",
+                "67ec706f.ba759"
             ]
         ]
     },
@@ -203,8 +318,8 @@
         "name": "post response",
         "statusCode": "200",
         "headers": {},
-        "x": 420,
-        "y": 400,
+        "x": 440,
+        "y": 300,
         "wires": []
     },
     {
@@ -212,19 +327,21 @@
         "type": "function",
         "z": "d6c6f9c.fb54f08",
         "name": "response data",
-        "func": "\nif (msg.payload){\n    msg.db=msg.db+1;\n    msg.payload=msg.db\n    return msg;\n}\n",
+        "func": "var count=global.get('Post');\ncount=count+1;\nmsg.payload=count\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "x": 460,
         "y": 80,
         "wires": [
-            []
+            [
+                "1dd9ef08.5ff261"
+            ]
         ]
     },
     {
         "id": "907f190c.779de8",
         "type": "ui_text",
-        "z": "4802f08a.e28c8",
+        "z": "c61304d7.c388e8",
         "group": "d09b2e26.23c97",
         "order": 1,
         "width": 0,
@@ -233,25 +350,8 @@
         "label": "Get ",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "x": 570,
-        "y": 200,
-        "wires": [],
-        "icon": "node-red-node-rbe/rbe.png"
-    },
-    {
-        "id": "8cc72a3d.5a5d68",
-        "type": "ui_text",
-        "z": "4802f08a.e28c8",
-        "group": "d09b2e26.23c97",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Post",
-        "format": "{{msg.count}}",
-        "layout": "col-center",
-        "x": 510,
-        "y": 340,
+        "x": 470,
+        "y": 560,
         "wires": [],
         "icon": "node-red-node-rbe/rbe.png"
     },
@@ -265,8 +365,8 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 330,
-        "y": 400,
+        "x": 270,
+        "y": 380,
         "wires": []
     },
     {
@@ -274,11 +374,17 @@
         "type": "subflow:d6c6f9c.fb54f08",
         "z": "4802f08a.e28c8",
         "name": "post",
-        "x": 170,
-        "y": 340,
+        "x": 110,
+        "y": 380,
         "wires": [
             [
-                "8cc72a3d.5a5d68"
+                "854b5734.618998"
+            ],
+            [
+                "854b5734.618998"
+            ],
+            [
+                "854b5734.618998"
             ]
         ]
     },
@@ -287,12 +393,10 @@
         "type": "subflow:b483e77d.48ce08",
         "z": "4802f08a.e28c8",
         "name": "Get",
-        "x": 130,
-        "y": 160,
+        "x": 170,
+        "y": 200,
         "wires": [
-            [
-                "907f190c.779de8"
-            ]
+            []
         ]
     },
     {
@@ -326,15 +430,15 @@
     {
         "id": "fed914f4.4fbb08",
         "type": "firebase.on",
-        "z": "4802f08a.e28c8",
+        "z": "d6158ccb.01e2c",
         "name": "db_post",
         "firebaseconfig": "51038992.05f198",
         "childpath": "post",
         "atStart": true,
         "eventType": "value",
         "queries": [],
-        "x": 140,
-        "y": 80,
+        "x": 250,
+        "y": 140,
         "wires": [
             [
                 "9f063ca7.40891",
@@ -345,13 +449,13 @@
     {
         "id": "9f063ca7.40891",
         "type": "function",
-        "z": "4802f08a.e28c8",
+        "z": "d6158ccb.01e2c",
         "name": "",
         "func": "\nglobal.set('Post',msg.payload);",
         "outputs": 1,
         "noerr": 0,
-        "x": 360,
-        "y": 80,
+        "x": 530,
+        "y": 120,
         "wires": [
             []
         ]
@@ -359,7 +463,7 @@
     {
         "id": "5df584bb.c5267c",
         "type": "debug",
-        "z": "4802f08a.e28c8",
+        "z": "d6158ccb.01e2c",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -371,11 +475,156 @@
         "wires": []
     },
     {
-        "id": "ed9d3f07.5410b",
-        "type": "ui_gauge",
+        "id": "1534ea2b.7f2f66",
+        "type": "firebase.on",
+        "z": "5926e5fb.06ee9c",
+        "name": "db_value",
+        "firebaseconfig": "51038992.05f198",
+        "childpath": "value",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 160,
+        "y": 40,
+        "wires": [
+            [
+                "876c1a3.32113e8",
+                "a9a7de55.33e0b",
+                "36e29cfe.00a154"
+            ]
+        ]
+    },
+    {
+        "id": "cc5f0310.109e5",
+        "type": "function",
         "z": "4802f08a.e28c8",
         "name": "",
+        "func": "\nglobal.set('Value',msg.payload);",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 770,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "876c1a3.32113e8",
+        "type": "debug",
+        "z": "5926e5fb.06ee9c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 570,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "67ec706f.ba759",
+        "type": "function",
+        "z": "d6c6f9c.fb54f08",
+        "name": "response data",
+        "func": "var value=global.get('Value');\nvalue =msg.payload.value;\nmsg.payload=value;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 380,
+        "y": 180,
+        "wires": [
+            [
+                "3a48e7ca.9d9168"
+            ]
+        ]
+    },
+    {
+        "id": "aea4b687.e4e608",
+        "type": "firebase.on",
+        "z": "c61304d7.c388e8",
+        "name": "db_get",
+        "firebaseconfig": "51038992.05f198",
+        "childpath": "get",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 210,
+        "y": 520,
+        "wires": [
+            [
+                "87815366.23933",
+                "34a4055.dc17bfa",
+                "907f190c.779de8"
+            ]
+        ]
+    },
+    {
+        "id": "87815366.23933",
+        "type": "function",
+        "z": "c61304d7.c388e8",
+        "name": "",
+        "func": "\nglobal.set('Get',msg.payload);",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "34a4055.dc17bfa",
+        "type": "debug",
+        "z": "c61304d7.c388e8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 500,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "18900538.df221b",
+        "type": "function",
+        "z": "b483e77d.48ce08",
+        "name": "response data",
+        "func": "var count=global.get('Get');\ncount=count+1;\nmsg.payload=count\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 280,
+        "y": 40,
+        "wires": [
+            [
+                "89a3d4a5.2e7758"
+            ]
+        ]
+    },
+    {
+        "id": "a9a7de55.33e0b",
+        "type": "ui_text",
+        "z": "5926e5fb.06ee9c",
         "group": "d09b2e26.23c97",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Post",
+        "format": "{{msg.count}}",
+        "layout": "col-center",
+        "x": 570,
+        "y": 160,
+        "wires": [],
+        "icon": "node-red-node-rbe/rbe.png"
+    },
+    {
+        "id": "36e29cfe.00a154",
+        "type": "ui_gauge",
+        "z": "5926e5fb.06ee9c",
+        "name": "",
+        "group": "acf12baf.a4ecb8",
         "order": 1,
         "width": 0,
         "height": 0,
@@ -392,26 +641,87 @@
         ],
         "seg1": "",
         "seg2": "",
-        "x": 570,
-        "y": 40,
+        "x": 550,
+        "y": 220,
         "wires": []
     },
     {
-        "id": "36036089.19198",
-        "type": "firebase.on",
+        "id": "c13f19b.8e803e8",
+        "type": "subflow:5926e5fb.06ee9c",
         "z": "4802f08a.e28c8",
-        "name": "post_db",
-        "firebaseconfig": "51038992.05f198",
-        "childpath": "post",
-        "atStart": true,
-        "eventType": "value",
-        "queries": [],
-        "x": 330,
-        "y": 40,
+        "name": "Value_db",
+        "x": 580,
+        "y": 280,
         "wires": [
             [
-                "ed9d3f07.5410b"
+                "cc5f0310.109e5"
             ]
+        ]
+    },
+    {
+        "id": "3d2239c9.608856",
+        "type": "subflow:c61304d7.c388e8",
+        "z": "4802f08a.e28c8",
+        "name": "Get_db",
+        "x": 570,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "bcd475cd.dbb5d8",
+        "type": "subflow:d6158ccb.01e2c",
+        "z": "4802f08a.e28c8",
+        "name": "Post_db",
+        "x": 395,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "3a48e7ca.9d9168",
+        "type": "firebase modify",
+        "z": "d6c6f9c.fb54f08",
+        "name": "update_value",
+        "firebaseconfig": "b1d3ba39.817868",
+        "childpath": "value",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 600,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1dd9ef08.5ff261",
+        "type": "firebase modify",
+        "z": "d6c6f9c.fb54f08",
+        "name": "update_value",
+        "firebaseconfig": "b1d3ba39.817868",
+        "childpath": "post",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 660,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "89a3d4a5.2e7758",
+        "type": "firebase modify",
+        "z": "b483e77d.48ce08",
+        "name": "update_get",
+        "firebaseconfig": "51038992.05f198",
+        "childpath": "get",
+        "method": "set",
+        "value": "msg.payload",
+        "priority": "msg.priority",
+        "x": 510,
+        "y": 60,
+        "wires": [
+            []
         ]
     }
 ]
