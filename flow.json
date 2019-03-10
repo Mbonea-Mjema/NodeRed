@@ -28,9 +28,14 @@
         "in": [],
         "out": [
             {
-                "x": 900,
-                "y": 240,
-                "wires": []
+                "x": 620,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "14b0f4b5.1e347b",
+                        "port": 0
+                    }
+                ]
             }
         ]
     },
@@ -54,6 +59,20 @@
         "order": "1"
     },
     {
+        "id": "b1d3ba39.817868",
+        "type": "firebase config",
+        "z": "d6c6f9c.fb54f08",
+        "firebaseurl": "graphic-mission-175719",
+        "loginType": "none"
+    },
+    {
+        "id": "51038992.05f198",
+        "type": "firebase config",
+        "z": "",
+        "firebaseurl": "graphic-mission-175719",
+        "loginType": "anonymous"
+    },
+    {
         "id": "b3235286.58502",
         "type": "http in",
         "z": "b483e77d.48ce08",
@@ -62,8 +81,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 50,
-        "y": 220,
+        "x": 70,
+        "y": 180,
         "wires": [
             [
                 "21f8f10a.5f633e",
@@ -78,8 +97,8 @@
         "name": "Response",
         "statusCode": "200",
         "headers": {},
-        "x": 620,
-        "y": 360,
+        "x": 480,
+        "y": 260,
         "wires": []
     },
     {
@@ -105,7 +124,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 260,
-        "y": 340,
+        "y": 220,
         "wires": [
             [
                 "161b5f0b.f5d771",
@@ -121,8 +140,8 @@
         "func": "// initialise the counter to 0 if it doesn't exist already\nvar count = context.get('count')||0;\ncount += 1;\n// store the value back\ncontext.set('count',count);\n// make it part of the outgoing msg object\nmsg.count = count;\nmsg.payload=msg.count;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 360,
-        "y": 220,
+        "x": 480,
+        "y": 200,
         "wires": [
             [
                 "5499cfaf.4784b"
@@ -137,8 +156,8 @@
         "func": "if (msg.db)\n{\n    msg.payload=msg.db\n    return msg;\n}\nif (msg.payload){\n    msg.db=msg.db+1;\n    msg.payload=msg.db\n    return msg;\n}\n",
         "outputs": 1,
         "noerr": 0,
-        "x": 560,
-        "y": 40,
+        "x": 680,
+        "y": 100,
         "wires": [
             []
         ]
@@ -151,39 +170,13 @@
         "func": "msg.db=msg.payload\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 230,
-        "y": 40,
+        "x": 430,
+        "y": 60,
         "wires": [
             [
                 "5499cfaf.4784b"
             ]
         ]
-    },
-    {
-        "id": "18e81bef.402e94",
-        "type": "ui_gauge",
-        "z": "d6c6f9c.fb54f08",
-        "name": "",
-        "group": "d09b2e26.23c97",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "gtype": "donut",
-        "title": "Post Value",
-        "label": "units",
-        "format": "{{msg.payload.value}}",
-        "min": 0,
-        "max": "100",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 370,
-        "y": 200,
-        "wires": []
     },
     {
         "id": "588d1ff7.186d",
@@ -199,7 +192,6 @@
         "wires": [
             [
                 "1624bead.6d1061",
-                "18e81bef.402e94",
                 "14b0f4b5.1e347b"
             ]
         ]
@@ -223,22 +215,8 @@
         "func": "\nif (msg.payload){\n    msg.db=msg.db+1;\n    msg.payload=msg.db\n    return msg;\n}\n",
         "outputs": 1,
         "noerr": 0,
-        "x": 380,
-        "y": 40,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "2cbe801.bc7ab8",
-        "type": "function",
-        "z": "d6c6f9c.fb54f08",
-        "name": "",
-        "func": "msg.db=msg.payload\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 220,
-        "y": 40,
+        "x": 460,
+        "y": 80,
         "wires": [
             []
         ]
@@ -287,7 +265,7 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 430,
+        "x": 330,
         "y": 400,
         "wires": []
     },
@@ -314,6 +292,125 @@
         "wires": [
             [
                 "907f190c.779de8"
+            ]
+        ]
+    },
+    {
+        "id": "137086d6.01fce9",
+        "type": "firebase auth",
+        "z": "4802f08a.e28c8",
+        "name": "DB",
+        "firebaseconfig": "51038992.05f198",
+        "x": 190,
+        "y": 260,
+        "wires": [
+            [
+                "5028b6cf.fd6518"
+            ]
+        ]
+    },
+    {
+        "id": "5028b6cf.fd6518",
+        "type": "debug",
+        "z": "4802f08a.e28c8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 410,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "fed914f4.4fbb08",
+        "type": "firebase.on",
+        "z": "4802f08a.e28c8",
+        "name": "db_post",
+        "firebaseconfig": "51038992.05f198",
+        "childpath": "post",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 140,
+        "y": 80,
+        "wires": [
+            [
+                "9f063ca7.40891",
+                "5df584bb.c5267c"
+            ]
+        ]
+    },
+    {
+        "id": "9f063ca7.40891",
+        "type": "function",
+        "z": "4802f08a.e28c8",
+        "name": "",
+        "func": "\nglobal.set('Post',msg.payload);",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5df584bb.c5267c",
+        "type": "debug",
+        "z": "4802f08a.e28c8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 540,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "ed9d3f07.5410b",
+        "type": "ui_gauge",
+        "z": "4802f08a.e28c8",
+        "name": "",
+        "group": "d09b2e26.23c97",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "Post Value",
+        "label": "units",
+        "format": "{{msg.payload.value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 570,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "36036089.19198",
+        "type": "firebase.on",
+        "z": "4802f08a.e28c8",
+        "name": "post_db",
+        "firebaseconfig": "51038992.05f198",
+        "childpath": "post",
+        "atStart": true,
+        "eventType": "value",
+        "queries": [],
+        "x": 330,
+        "y": 40,
+        "wires": [
+            [
+                "ed9d3f07.5410b"
             ]
         ]
     }
