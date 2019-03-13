@@ -777,8 +777,8 @@
         "topic": "Lab_led",
         "qos": "2",
         "broker": "867d9520.699df8",
-        "x": 130,
-        "y": 200,
+        "x": 290,
+        "y": 700,
         "wires": [
             [
                 "230ca5ac.27857a"
@@ -885,7 +885,7 @@
         "id": "230ca5ac.27857a",
         "type": "ui_toast",
         "z": "3374edeb.b9ac82",
-        "position": "top right",
+        "position": "bottom right",
         "displayTime": "3",
         "highlight": "",
         "outputs": 0,
@@ -893,8 +893,8 @@
         "cancel": "",
         "topic": "",
         "name": "",
-        "x": 400,
-        "y": 180,
+        "x": 610,
+        "y": 680,
         "wires": []
     },
     {
@@ -902,9 +902,9 @@
         "type": "ui_slider",
         "z": "3374edeb.b9ac82",
         "name": "",
-        "label": "slider",
+        "label": "PWM",
         "group": "bdd68afb.d2eb18",
-        "order": 0,
+        "order": 3,
         "width": 0,
         "height": 0,
         "passthru": true,
@@ -932,5 +932,75 @@
         "x": 350,
         "y": 420,
         "wires": []
+    },
+    {
+        "id": "66114a13.178c14",
+        "type": "ui_audio",
+        "z": "3374edeb.b9ac82",
+        "name": "",
+        "group": "bdd68afb.d2eb18",
+        "voice": "fr-FR",
+        "always": "",
+        "x": 560,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "bc5a04e2.a49288",
+        "type": "mqtt in",
+        "z": "3374edeb.b9ac82",
+        "name": "",
+        "topic": "pin_topic",
+        "qos": "2",
+        "broker": "867d9520.699df8",
+        "x": 200,
+        "y": 560,
+        "wires": [
+            [
+                "f0579c7a.12d6b"
+            ]
+        ]
+    },
+    {
+        "id": "f0579c7a.12d6b",
+        "type": "function",
+        "z": "3374edeb.b9ac82",
+        "name": "",
+        "func": "var data= msg.payload;\nif(parseInt(data)){\ndata =\"The button is pressed!\"\nmsg.payload=data;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 560,
+        "wires": [
+            [
+                "66114a13.178c14",
+                "230ca5ac.27857a"
+            ]
+        ]
+    },
+    {
+        "id": "a7fd8d75.143a2",
+        "type": "ui_button",
+        "z": "3374edeb.b9ac82",
+        "name": "",
+        "group": "bdd68afb.d2eb18",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "button",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "pin_topic",
+        "x": 150,
+        "y": 480,
+        "wires": [
+            [
+                "2684008a.ce193"
+            ]
+        ]
     }
 ]
