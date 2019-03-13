@@ -777,8 +777,8 @@
         "topic": "Lab_led",
         "qos": "2",
         "broker": "867d9520.699df8",
-        "x": 290,
-        "y": 700,
+        "x": 350,
+        "y": 620,
         "wires": [
             [
                 "230ca5ac.27857a"
@@ -893,8 +893,8 @@
         "cancel": "",
         "topic": "",
         "name": "",
-        "x": 610,
-        "y": 680,
+        "x": 570,
+        "y": 600,
         "wires": []
     },
     {
@@ -939,10 +939,10 @@
         "z": "3374edeb.b9ac82",
         "name": "",
         "group": "bdd68afb.d2eb18",
-        "voice": "fr-FR",
+        "voice": "hi-IN",
         "always": "",
-        "x": 560,
-        "y": 560,
+        "x": 540,
+        "y": 520,
         "wires": []
     },
     {
@@ -966,7 +966,7 @@
         "type": "function",
         "z": "3374edeb.b9ac82",
         "name": "",
-        "func": "var data= msg.payload;\nif(parseInt(data)){\ndata =\"The button is pressed!\"\nmsg.payload=data;\n}\nreturn msg;",
+        "func": "var data= msg.payload;\nif(!parseInt(data)){\ndata =\"The button is pressed!\"\nmsg.payload=data;\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 370,
