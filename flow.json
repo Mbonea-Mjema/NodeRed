@@ -977,30 +977,5 @@
                 "230ca5ac.27857a"
             ]
         ]
-    },
-    {
-        "id": "a7fd8d75.143a2",
-        "type": "ui_button",
-        "z": "3374edeb.b9ac82",
-        "name": "",
-        "group": "bdd68afb.d2eb18",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "button",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "1",
-        "payloadType": "str",
-        "topic": "pin_topic",
-        "x": 150,
-        "y": 480,
-        "wires": [
-            [
-                "2684008a.ce193"
-            ]
-        ]
     }
 ]
