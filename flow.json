@@ -2,7 +2,14 @@
     {
         "id": "4802f08a.e28c8",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "HTTP",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "3374edeb.b9ac82",
+        "type": "tab",
+        "label": "Mqtt",
         "disabled": false,
         "info": ""
     },
@@ -228,6 +235,44 @@
         "name": "Value",
         "tab": "20bdbd05.eba782",
         "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "867d9520.699df8",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    },
+    {
+        "id": "4cd01473.1f7a1c",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Mqtt",
+        "icon": "dashboard",
+        "order": 2
+    },
+    {
+        "id": "bdd68afb.d2eb18",
+        "type": "ui_group",
+        "z": "",
+        "name": "Led",
+        "tab": "4cd01473.1f7a1c",
+        "order": 1,
         "disp": true,
         "width": "6",
         "collapse": false
@@ -723,5 +768,115 @@
         "y": 460,
         "wires": [],
         "icon": "node-red-node-rbe/rbe.png"
+    },
+    {
+        "id": "284d9c96.6a8df4",
+        "type": "mqtt in",
+        "z": "3374edeb.b9ac82",
+        "name": "",
+        "topic": "Lab_led",
+        "qos": "2",
+        "broker": "867d9520.699df8",
+        "x": 200,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d0e7aab5.490a98",
+        "type": "mqtt out",
+        "z": "3374edeb.b9ac82",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "867d9520.699df8",
+        "x": 410,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "50b08552.3b76cc",
+        "type": "inject",
+        "z": "3374edeb.b9ac82",
+        "name": "",
+        "topic": "Lab_led",
+        "payload": "toggle",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "d0e7aab5.490a98"
+            ]
+        ]
+    },
+    {
+        "id": "86a46a59.70f308",
+        "type": "ui_switch",
+        "z": "3374edeb.b9ac82",
+        "name": "",
+        "label": "switch",
+        "group": "bdd68afb.d2eb18",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "style": "",
+        "onvalue": "on",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "off",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "x": 170,
+        "y": 380,
+        "wires": [
+            [
+                "d0e7aab5.490a98",
+                "2ff25bf4.d9dec4"
+            ]
+        ]
+    },
+    {
+        "id": "3adf1111.66700e",
+        "type": "ui_toast",
+        "z": "3374edeb.b9ac82",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "",
+        "name": "",
+        "x": 550,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "2ff25bf4.d9dec4",
+        "type": "function",
+        "z": "3374edeb.b9ac82",
+        "name": "",
+        "func": "var data= msg.payload;\ndata=\"Published \"+data\nmsg.payload=data;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 440,
+        "wires": [
+            [
+                "3adf1111.66700e"
+            ]
+        ]
     }
 ]
