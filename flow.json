@@ -777,10 +777,12 @@
         "topic": "Lab_led",
         "qos": "2",
         "broker": "867d9520.699df8",
-        "x": 200,
-        "y": 100,
+        "x": 130,
+        "y": 200,
         "wires": [
-            []
+            [
+                "230ca5ac.27857a"
+            ]
         ]
     },
     {
@@ -838,8 +840,8 @@
         "offvalueType": "str",
         "officon": "",
         "offcolor": "",
-        "x": 170,
-        "y": 380,
+        "x": 250,
+        "y": 320,
         "wires": [
             [
                 "d0e7aab5.490a98",
@@ -859,8 +861,8 @@
         "cancel": "",
         "topic": "",
         "name": "",
-        "x": 550,
-        "y": 400,
+        "x": 610,
+        "y": 320,
         "wires": []
     },
     {
@@ -871,12 +873,64 @@
         "func": "var data= msg.payload;\ndata=\"Published \"+data\nmsg.payload=data;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 340,
-        "y": 440,
+        "x": 410,
+        "y": 340,
         "wires": [
             [
                 "3adf1111.66700e"
             ]
         ]
+    },
+    {
+        "id": "230ca5ac.27857a",
+        "type": "ui_toast",
+        "z": "3374edeb.b9ac82",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "topic": "",
+        "name": "",
+        "x": 400,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "60b92aa3.309f14",
+        "type": "ui_slider",
+        "z": "3374edeb.b9ac82",
+        "name": "",
+        "label": "slider",
+        "group": "bdd68afb.d2eb18",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "topic": "pwm_topic",
+        "min": 0,
+        "max": "250",
+        "step": 1,
+        "x": 150,
+        "y": 400,
+        "wires": [
+            [
+                "2684008a.ce193"
+            ]
+        ]
+    },
+    {
+        "id": "2684008a.ce193",
+        "type": "mqtt out",
+        "z": "3374edeb.b9ac82",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "867d9520.699df8",
+        "x": 350,
+        "y": 420,
+        "wires": []
     }
 ]
